@@ -1,0 +1,35 @@
+README.md -> .md stands for mark down
+Its a way to pretty text by using some syntax
+In a .md file if we start our syntax with 2 #(hashtags) its a sort of heading
+
+Whenever you are creating a backend nodejs application we have to definately need to have there
+Initialize a node project put a package.json 
+
+In backend folder run command
+npm init  
+and respond the questions
+Q1 package name: (backend) todo-backend
+Q2 version: (1.0.0)
+Q3 description: This is a simple todo apllication backend
+Q4 entry point: (index.js) 
+Q5 test command: 
+Q6 git repository: 
+Q7 keywords: 
+Q8 author: samarth
+
+
+"dependencies": {
+    "express": "^4.19.2"
+  }
+
+This is imp for package.json a place where all the external dependencies that we are using are listed
+
+We dont have to share node_modues with anyone we can just delete them while deploying our websites
+we just have to run npm install command and then all our external libraries will automatically gets download this is because of dependencies present in package.json
+
+
+CORS error :- whenever you are on localhost:5173 you cannot hit silently localhost:3000
+You cannot hit one url from another frontend url, one backend url from a different frontend url unless your backend actually allows that frontend 
+unless your backend says ki han bhai localhost:5173 can send me a silent request your backend will reject them 
+
+Reconciliation -> The process of figuring out ki when what DOM needs to happen as your application grows that why a component should return a top level div
