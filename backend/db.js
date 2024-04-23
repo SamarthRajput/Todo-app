@@ -1,7 +1,11 @@
 const mongoose = require("mongoose");
 const { boolean } = require("zod");
+require("dotenv").config();
 
-mongoose.connect("mongodb+srv://ssamarth224:GGeJIb5AQeVTlo4G@cluster0.gvveypg.mongodb.net/todos");
+mongoose.connect(process.env.MONGODB_URL)
+.then(()=> console.log("connected to mongodb.."))
+.catch((err) => console.log(err));
+
 //we have to put this url in .env so that our id password doesnt get leaked after we put our code on github
 /*
     *Todo{
