@@ -12,4 +12,3 @@ It has the following features:-
 - React for Frontend
 - Express for Backend 
 - MongoDB for Database
-- Zod for Verification
