@@ -39,8 +39,7 @@ app.post("/todo", async function(req, res){
     //we have used await because we should await for the thing to actually reach the database before you tell user ki han bhai todo created as database is sometimes down
     await todo.create({
         title: createPayload.title,
-        description: createPayload.description,
-        completed : false
+        description: createPayload.description
     })
     
     res.json({
@@ -64,31 +63,24 @@ app.get("/todos", async function(req, res){
 });
 
 //put endpoint for marking a specific todo as completed 
-app.put("/completed", async function(req, res){
+app.put("/completed/:id", async function(req, res){
 
-    const updatePayload = req.body;
-    const parsedPayload = updateTodo.safeParse(updatePayload);
-    if(!parsedPayload){
-        res.status(404).json({
-            message: "Wrong id provided"
-        })
-        return;
-    }
+    const updatePayload = req.params.id;
+
     //update the todo
-
-    //the update() function takes 2 arguments 
+    //the findByIdAndUpdate() function takes 2 arguments 
     //First one is what are your conditions what do you want to update i want to update something which has _id has this
     //_id because mongoDB automatically generates an unique id for every data and i have update it based on that
-    await todo.update({
-        _id : req.body.id
-    }, {
-        completed: true
-    })
+    const updateTodo = await todo.findByIdAndUpdate(updatePayload, {completed: true})
+
     res.json({
         message:"Todo marked as completed"
     })
 });
 
-
+app.delete("/delete/:id" , async function(req, res){
+    const deletePayload = req.params.id;
+    const deleteTodo = await todo.findByIdAndDelete(deletePayload)
+});
 
 app.listen(3000);

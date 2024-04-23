@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const { boolean } = require("zod");
+const types = require("./types");
 require("dotenv").config();
 
 mongoose.connect(process.env.MONGODB_URL)
@@ -21,7 +22,10 @@ const todoSchema = mongoose.Schema({
     //Schema definition here
     title : String,
     description: String,
-    completed: Boolean
+    completed: {
+        type: Boolean,
+        default: false 
+    }
 })
 
 const todo = mongoose.model('todos', todoSchema);

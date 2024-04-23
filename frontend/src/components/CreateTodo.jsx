@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Todos } from "./Todos";
+import axios from 'axios'
 
 export function CreateTodo(props){
 
@@ -30,33 +31,39 @@ export function CreateTodo(props){
             margin: 10
         }} onClick={() => {
 
-            // //using axios library
-            // axios.post("http://localhost:3000/todo", {
-            //     title: title,
-            //     description:  description
-            // })
+            //using axios library
+            axios.post("http://localhost:3000/todo", {
+                title: title,
+                description:  description
+            })
+            .then(function(response){
+                setTitle(response.data.title)
+                setDescription(response.data.description)
+                alert("todo added")
+            })
 
             //using fetch function
+            // fetch("http://localhost:3000/todo" , {
+            //     method:"POST",
+            //     body: JSON.stringify({
+            //         //It will work but it is not the cleanest syntax to keep in mind there are 2 ways
+            //         // title: document.getElementById("title").innerHTML,
+            //         // description : document.getElementById("desc").innerHTML
 
-            fetch("http://localhost:3000/todo" , {
-                method:"POST",
-                body: JSON.stringify({
-                    //It will work but it is not hte cleanest syntax to keep in mind there are 2 ways
-                    // title: document.getElementById("title").innerHTML,
-                    // description : document.getElementById("desc").innerHTML
+            //         //by creating local state variable
+            //         title : title,
+            //         description : description
+            //     }), 
+            //     headers: {
+            //         "Content-type" : "apllication/json"
+            //     }
+            // })
+            //   .then(async function(res){
+            //     const json = await res.json();
+            //     alert("todo added");
+            //   });
 
-                    //by creating local state variable
-                    title : title,
-                    description : description
-                }), 
-                headers: {
-                    "Content-type" : "apllication/json"
-                }
-            })
-              .then(async function(res){
-                const json = await res.json();
-                alert("todo added");
-              });
+
         }}>Add a Todo</button>
     </div>
 }
