@@ -17,23 +17,19 @@ import { useEffect, useState } from "react"
 
 function handleComplete(id){
     //To make a PUT request using axios we have to provide the data that we want to update in the request body
-    useEffect(()=>{
         axios.put(`https://todo-app-api-tp54.onrender.com/completed/${id}`, {
             completed: true
         })
         .then(function(response){
             console.log(response)
         })
-    }, [])
 }
 
 function handleDelete(id){
-    useEffect(()=>{
         axios.delete(`https://todo-app-api-tp54.onrender.com/delete/${id}`)
         .then(function(response){
             console.log(response)
         })
-    },[])
 }
 
 export function Todos({todos}){
