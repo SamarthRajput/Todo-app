@@ -17,7 +17,7 @@ import { useState } from "react"
 
 function handleComplete(id){
     //To make a PUT request using axios we have to provide the data that we want to update in the request body
-    axios.put(`http://localhost:3000/completed/${id}`, {
+    axios.put(`https://todo-app-api-tp54.onrender.com/completed/${id}`, {
         completed: true
     })
     .then(function(response){
@@ -26,7 +26,7 @@ function handleComplete(id){
 }
 
 function handleDelete(id){
-    axios.delete(`http://localhost:3000/delete/${id}`)
+    axios.delete(`https://todo-app-api-tp54.onrender.com/delete/${id}`)
     .then(function(response){
         console.log(response)
     })

@@ -26,7 +26,7 @@ function App() {
   //using axios to function to call the backend server
   //todos in dependency array because if todo get deleted or new todo is created then the axios.get() call will happen
   useEffect(()=> {
-    axios.get("http://localhost:3000/todos")
+    axios.get("https://todo-app-api-tp54.onrender.com/todos")
     .then(function(response){
       setTodos(response.data.todos)
     })

@@ -32,7 +32,7 @@ export function CreateTodo(props){
         }} onClick={() => {
 
             //using axios library
-            axios.post("http://localhost:3000/todo", {
+            axios.post("https://todo-app-api-tp54.onrender.com/todo", {
                 title: title,
                 description:  description
             })
