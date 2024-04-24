@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Todos } from "./Todos";
 import axios from 'axios'
 
@@ -32,15 +32,17 @@ export function CreateTodo(props){
         }} onClick={() => {
 
             //using axios library
-            axios.post("https://todo-app-api-tp54.onrender.com/todo", {
-                title: title,
-                description:  description
-            })
-            .then(function(response){
-                setTitle(response.data.title)
-                setDescription(response.data.description)
-                alert("todo added")
-            })
+            useEffect(()=>{
+                axios.post("https://todo-app-api-tp54.onrender.com/todo", {
+                    title: title,
+                    description:  description
+                })
+                .then(function(response){
+                    setTitle(response.data.title)
+                    setDescription(response.data.description)
+                    alert("todo added")
+                })
+            }, [])
 
             //using fetch function
             // fetch("http://localhost:3000/todo" , {
