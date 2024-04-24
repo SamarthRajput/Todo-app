@@ -10,5 +10,6 @@ It has the following features:-
 
 **Tech Stack used** :
 - React for Frontend
-- Express for Backend 
+- Express for Backend
+- Node.js for Backend Runtime
 - MongoDB for Database
