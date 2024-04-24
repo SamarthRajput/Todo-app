@@ -32,7 +32,6 @@ export function CreateTodo(props){
         }} onClick={() => {
 
             //using axios library
-            useEffect(()=>{
                 axios.post("https://todo-app-api-tp54.onrender.com/todo", {
                     title: title,
                     description:  description
@@ -42,7 +41,6 @@ export function CreateTodo(props){
                     setDescription(response.data.description)
                     alert("todo added")
                 })
-            }, [])
 
             //using fetch function
             // fetch("http://localhost:3000/todo" , {
